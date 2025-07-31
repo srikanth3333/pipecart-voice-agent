@@ -26,9 +26,16 @@ Have your API keys ready. We'll add them to your `.env` shortly.
 
 ## Setup
 
-1. Set up a virtual environment
+1. Clone this repository
 
-From the `examples/quickstart` directory, run:
+```bash
+git clone https://github.com/pipecat-ai/pipecat-quickstart.git
+cd pipecat-quickstart
+```
+
+2. Set up a virtual environment
+
+From the `pipecat-quickstart` directory, run:
 
 ```bash
 python -m venv .venv
@@ -37,7 +44,7 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 > Using `uv`? Create your venv using: `uv venv && source .venv/bin/activate`.
 
-2. Install dependencies
+3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -45,7 +52,7 @@ pip install -r requirements.txt
 
 > Using `uv`? Install requirements using: `uv pip install -r requirements.txt`.
 
-3. Configure environment variables
+4. Configure environment variables
 
 Create a `.env` file:
 
@@ -61,7 +68,7 @@ OPENAI_API_KEY=your_openai_api_key
 CARTESIA_API_KEY=your_cartesia_api_key
 ```
 
-4. Run the example
+5. Run the example
 
 Run your bot using:
 
