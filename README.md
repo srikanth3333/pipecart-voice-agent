@@ -28,59 +28,59 @@ Have your API keys ready. We'll add them to your `.env` shortly.
 
 1. Clone this repository
 
-```bash
-git clone https://github.com/pipecat-ai/pipecat-quickstart.git
-cd pipecat-quickstart
-```
+   ```bash
+   git clone https://github.com/pipecat-ai/pipecat-quickstart.git
+   cd pipecat-quickstart
+   ```
 
 2. Set up a virtual environment
 
-From the `pipecat-quickstart` directory, run:
+   From the `pipecat-quickstart` directory, run:
 
-```bash
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-```
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   ```
 
-> Using `uv`? Create your venv using: `uv venv && source .venv/bin/activate`.
+   > Using `uv`? Create your venv using: `uv sync`
 
 3. Install dependencies
 
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-> Using `uv`? Install requirements using: `uv pip install -r requirements.txt`.
+   > Using `uv`? Dependencies are already installed from the previous step.
 
 4. Configure environment variables
 
-Create a `.env` file:
+   Create a `.env` file:
 
-```bash
-cp env.example .env
-```
+   ```bash
+   cp env.example .env
+   ```
 
-Then, add your API keys:
+   Then, add your API keys:
 
-```
-DEEPGRAM_API_KEY=your_deepgram_api_key
-OPENAI_API_KEY=your_openai_api_key
-CARTESIA_API_KEY=your_cartesia_api_key
-```
+   ```
+   DEEPGRAM_API_KEY=your_deepgram_api_key
+   OPENAI_API_KEY=your_openai_api_key
+   CARTESIA_API_KEY=your_cartesia_api_key
+   ```
 
 5. Run the example
 
-Run your bot using:
+   Run your bot using:
 
-```bash
-python bot.py
-```
+   ```bash
+   python bot.py
+   ```
 
-> Using `uv`? Run your bot using: `uv run bot.py`.
+   > Using `uv`? Run your bot using: `uv run bot.py`.
 
-**Open http://localhost:7860 in your browser** and click `Connect` to start talking to your bot.
+   **Open http://localhost:7860 in your browser** and click `Connect` to start talking to your bot.
 
-> 💡 First run note: The initial startup may take ~10 seconds as Pipecat downloads required models, like the Silero VAD model.
+   > 💡 First run note: The initial startup may take ~15 seconds as Pipecat downloads required models, like the Silero VAD model.
 
 ## Troubleshooting
 
