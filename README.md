@@ -61,13 +61,13 @@ Have your API keys ready. We'll add them to your `.env` shortly.
 
 4. Run the example
 
-   Run your bot using:
-
    ```bash
    python bot.py
    ```
 
    > Using `uv`? Run your bot using: `uv run bot.py`.
+
+5. Connect and test
 
    **Open http://localhost:7860/client in your browser** and click `Connect` to start talking to your bot.
 
