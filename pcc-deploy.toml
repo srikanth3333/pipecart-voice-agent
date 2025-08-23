@@ -1,6 +1,5 @@
 agent_name = "quickstart"
 image = "your_username/quickstart:0.1"
-image_credentials = "dockerhub-access"
 secret_set = "quickstart-secrets"
 
 [scaling]
