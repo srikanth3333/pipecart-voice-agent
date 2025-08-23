@@ -45,7 +45,6 @@ from pipecat.services.openai.llm import OpenAILLMService
 from pipecat.transports.base_transport import BaseTransport, TransportParams
 from pipecat.transports.services.daily import DailyParams
 
-logger.info("✅ Pipeline components loaded")
 logger.info("✅ All components loaded successfully!")
 
 load_dotenv(override=True)
