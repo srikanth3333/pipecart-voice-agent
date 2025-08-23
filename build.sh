@@ -2,7 +2,7 @@
 set -e
 
 VERSION="0.1"
-DOCKER_USERNAME="markatdaily"
+DOCKER_USERNAME="your_username"
 AGENT_NAME="quickstart"
 
 # Build the Docker image with the correct context
