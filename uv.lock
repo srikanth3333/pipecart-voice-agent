@@ -1727,7 +1727,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "pipecat-ai", extras = ["webrtc", "daily", "silero", "deepgram", "openai", "cartesia", "runner"], specifier = ">=0.0.79" },
-    { name = "pipecatcloud", specifier = ">=0.2.3" },
+    { name = "pipecatcloud", specifier = ">=0.2.4" },
 ]
 
 [package.metadata.requires-dev]
@@ -1735,7 +1735,7 @@ dev = [{ name = "ruff", specifier = "~=0.12.1" }]
 
 [[package]]
 name = "pipecatcloud"
-version = "0.2.3"
+version = "0.2.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiohttp" },
@@ -1748,9 +1748,9 @@ dependencies = [
     { name = "typer" },
     { name = "uvicorn" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d5/31/6b86af48be2d83a57f1ab34ac8ee09bf25ee54a61dfb78b0c96d4c05bb7c/pipecatcloud-0.2.3.tar.gz", hash = "sha256:a77441a88e6c1baa97c717e7e42406b7970f7f0f947ef893b59b31d95eee85be", size = 56393, upload-time = "2025-08-20T00:56:53.203Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ab/52/a813e9180714a9a542030c9cef3a7d8f3e04a0cd25e44cbeae66c7516be3/pipecatcloud-0.2.4.tar.gz", hash = "sha256:9ffb7709d6caa89279b26e713159c9337911b0ea862b590a8ba0749371ba04ec", size = 61361, upload-time = "2025-08-26T21:22:40.012Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0a/2f/285b132714a64ee2ae0d85e9b03c105c547a4511ffcc4ad79ae5dfe7942b/pipecatcloud-0.2.3-py3-none-any.whl", hash = "sha256:0b0d8acc0e7ae732bebdd142c74f7fd5d67c19119802c050cb7b06aaeda25dcb", size = 45283, upload-time = "2025-08-20T00:56:50.658Z" },
+    { url = "https://files.pythonhosted.org/packages/f1/65/25cf51c2951b159d8f2b01b87e6170cced1ef241a2b1577719de6724c129/pipecatcloud-0.2.4-py3-none-any.whl", hash = "sha256:048360183e48e4ab2fd5a09f23b7b19594fac4f3822c353d0873a9fce05913ba", size = 49068, upload-time = "2025-08-26T21:22:38.373Z" },
 ]
 
 [[package]]
