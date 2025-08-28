@@ -20,7 +20,7 @@ Run the bot using::
 """
 
 import os
-
+import sys
 from dotenv import load_dotenv
 from loguru import logger
 
