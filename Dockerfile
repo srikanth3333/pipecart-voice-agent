@@ -1,13 +1,16 @@
-FROM python:3.11-slim
+FROM python:3.11
 
-# Install system dependencies
+# Install system dependencies for OpenCV
 RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
+    libgl1-mesa-dev \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender1 \
+    libgomp1 \
     ffmpeg \
-    libopus0 \
-    libopus-dev \
-    pkg-config \
+    libgstreamer1.0-0 \
+    libgstreamer-plugins-base1.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
 # Install uv
@@ -16,24 +19,22 @@ RUN pip install uv
 # Set working directory
 WORKDIR /app
 
-# Copy dependency files first for better caching
-COPY pyproject.toml uv.lock* ./
+# Enable bytecode compilation
+ENV UV_COMPILE_BYTECODE=1
+ENV UV_LINK_MODE=copy
 
-# Install Python dependencies
-RUN uv sync --locked --no-install-project --no-dev
+# Copy dependency files first
+COPY uv.lock pyproject.toml ./
 
-# Copy application files
-COPY bot.py ./
+# Install the project's dependencies
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --locked --no-install-project --no-dev
 
-# Install the project
-RUN uv sync --locked --no-dev
+# Copy the application code
+COPY ./bot.py bot.py
 
-# Set environment variables
-ENV PYTHONPATH=/app
-ENV PATH="/app/.venv/bin:$PATH"
+# Railway provides PORT env variable
+ENV HOST=0.0.0.0
 
-# Railway will set PORT automatically
-EXPOSE $PORT
-
-# Run the application
-CMD ["uv", "run", "bot.py"]
+# Run the bot
+CMD ["uv", "run", "python", "-c", "import os; port = os.getenv('PORT', '7860'); exec(f'import sys; sys.argv = [\"bot.py\", \"--host\", \"0.0.0.0\", \"--port\", \"{port}\"]; exec(open(\"bot.py\").read())')"]
