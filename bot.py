@@ -45,6 +45,8 @@ from pipecat.services.openai.llm import OpenAILLMService
 from pipecat.transports.base_transport import BaseTransport, TransportParams
 from pipecat.transports.services.daily import DailyParams
 
+PORT = int(os.getenv("PORT", 7860))
+
 logger.info("✅ All components loaded successfully!")
 
 load_dotenv(override=True)

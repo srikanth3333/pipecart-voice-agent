@@ -1,16 +1,40 @@
-FROM dailyco/pipecat-base:latest
+FROM python:3.11-slim
 
-# Enable bytecode compilation
-ENV UV_COMPILE_BYTECODE=1
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    ffmpeg \
+    libopus0 \
+    libopus-dev \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copy from the cache instead of linking since it's a mounted volume
-ENV UV_LINK_MODE=copy
+# Install uv
+RUN pip install uv
 
-# Install the project's dependencies using the lockfile and settings
-RUN --mount=type=cache,target=/root/.cache/uv \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --locked --no-install-project --no-dev
+# Set working directory
+WORKDIR /app
 
-# Copy the application code
-COPY ./bot.py bot.py
+# Copy dependency files first for better caching
+COPY pyproject.toml uv.lock* ./
+
+# Install Python dependencies
+RUN uv sync --locked --no-install-project --no-dev
+
+# Copy application files
+COPY bot.py ./
+
+# Install the project
+RUN uv sync --locked --no-dev
+
+# Set environment variables
+ENV PYTHONPATH=/app
+ENV PATH="/app/.venv/bin:$PATH"
+ENV PORT=7860
+
+# Expose the port
+EXPOSE $PORT
+
+# Run the application
+CMD ["uv", "run", "bot.py"]

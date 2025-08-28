@@ -1,5 +1,5 @@
 agent_name = "quickstart"
-image = "your_username/quickstart:0.1"
+image = "srikanth11133/quickstart:0.1"
 secret_set = "quickstart-secrets"
 
 [scaling]
