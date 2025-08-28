@@ -20,6 +20,7 @@ Run the bot using::
 """
 
 import os
+import sys
 
 from dotenv import load_dotenv
 from loguru import logger
@@ -45,6 +46,7 @@ from pipecat.services.openai.llm import OpenAILLMService
 from pipecat.transports.base_transport import BaseTransport, TransportParams
 from pipecat.transports.services.daily import DailyParams
 
+HOST = os.getenv("HOST", "0.0.0.0")
 PORT = int(os.getenv("PORT", 7860))
 
 logger.info("✅ All components loaded successfully!")
@@ -117,6 +119,11 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments):
 
 async def bot(runner_args: RunnerArguments):
     """Main bot entry point for the bot starter."""
+    logger.info(f"Bot function called. Host: {HOST}, Port: {PORT}")
+
+
+    runner_args.host = HOST
+    runner_args.port = PORT
 
     transport_params = {
         "daily": lambda: DailyParams(
@@ -138,5 +145,8 @@ async def bot(runner_args: RunnerArguments):
 
 if __name__ == "__main__":
     from pipecat.runner.run import main
-
+    # Override any default arguments
+    sys.argv.extend(['--host', HOST, '--port', str(PORT)])
+    
+    logger.info(f"🚀 Starting bot on {HOST}:{PORT}")
     main()
