@@ -26,9 +26,8 @@ ENV UV_LINK_MODE=copy
 # Copy dependency files first
 COPY uv.lock pyproject.toml ./
 
-# Install the project's dependencies
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --locked --no-install-project --no-dev
+# Install the project's dependencies (removed cache mount)
+RUN uv sync --locked --no-install-project --no-dev
 
 # Copy the application code
 COPY ./bot.py bot.py
